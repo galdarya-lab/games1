@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#087fc1">
+  <title>Sea Quest — Learn, Play, Explore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&family=Nunito+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="bubble-bg" aria-hidden="true"></div>
+  <div class="sea-floor" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+
+  <section id="profile-screen" class="screen profile-screen" aria-labelledby="welcome-title">
+    <div class="profile-card panel">
+      <div class="brand brand-large centered-brand"><span class="brand-mark">SQ</span><span>SEA QUEST<small>LEARN • PLAY • EXPLORE</small></span></div>
+      <img class="profile-mascot" src="assets/generated/submarine.png" alt="Friendly Sea Quest submarine">
+      <p class="eyebrow">Your underwater adventure</p>
+      <h1 id="welcome-title">What is your name?</h1>
+      <p>Choose your explorer and let's find the treasure!</p>
+      <form id="profile-form">
+        <label class="sr-only" for="student-name">Student name</label>
+        <input id="student-name" maxlength="18" autocomplete="off" placeholder="Type your name" required>
+        <fieldset class="avatar-picker">
+          <legend>Choose your avatar</legend>
+          <label><input type="radio" name="avatar" value="child-1" checked><span class="avatar-art child-avatar child-1"></span></label>
+          <label><input type="radio" name="avatar" value="child-2"><span class="avatar-art child-avatar child-2"></span></label>
+          <label><input type="radio" name="avatar" value="child-3"><span class="avatar-art child-avatar child-3"></span></label>
+          <label><input type="radio" name="avatar" value="child-4"><span class="avatar-art child-avatar child-4"></span></label>
+        </fieldset>
+        <button class="primary-btn wide" type="submit"><span>▶</span> Start Adventure</button>
+      </form>
+    </div>
+  </section>
+
+  <div id="app" class="app hidden">
+    <header class="topbar panel">
+      <button class="brand" data-nav="home" aria-label="Go home"><span class="brand-mark">SQ</span><span>SEA QUEST<small>LEARN • PLAY • EXPLORE</small></span></button>
+      <nav aria-label="Main navigation">
+        <button data-nav="home" class="active"><i class="nav-dot home-dot"></i><span>Home</span></button>
+        <button data-nav="home"><i class="nav-dot game-dot"></i><span>Games</span></button>
+        <button data-nav="map"><i class="nav-dot map-dot"></i><span>My Map</span></button>
+      </nav>
+      <div class="player-summary">
+        <span id="total-coins" class="coin-pill"><i class="tiny-coin"></i> 0</span>
+        <div class="audio-controls" aria-label="Music controls">
+          <button id="sound-toggle" class="icon-btn" aria-label="Mute all sound">🔊</button>
+          <label class="volume-control" title="Music volume"><span>♫</span><input id="music-volume" type="range" min="0" max="100" value="28" aria-label="Music volume"></label>
+        </div>
+        <button id="profile-button" class="player-pill"><span id="header-avatar" class="avatar-portrait" data-avatar="child-1"></span><span id="header-name">Explorer</span></button>
+      </div>
+    </header>
+
+    <main>
+      <section id="home-view" class="view active">
+        <div class="hero-copy showcase-title">
+          <p class="eyebrow">Dive • Learn • Discover</p>
+          <h1>SEA QUEST</h1>
+          <p>Three underwater games. One hidden treasure.</p>
+        </div>
+        <img class="home-captain" src="assets/generated/submarine.png" alt="Friendly submarine ready for an adventure">
+        <div id="mini-progress" class="mini-progress panel"></div>
+        <div class="game-grid">
+          <article class="game-card bubble-card">
+            <div class="card-scene bubble-preview reef-scene" aria-hidden="true">
+              <img class="card-octopus-art" src="assets/generated/octopus-card.png" alt="">
+              <span>A</span><span>B</span><span>A</span>
+            </div>
+            <div class="card-body">
+              <span class="number-badge">1</span>
+              <p class="card-kicker">Match the same letters</p>
+              <h2>Bubble Match</h2>
+              <p>Match three bubbles with the same letter.</p>
+              <div class="card-coins" data-coins="bubble"></div>
+              <button class="primary-btn bubble-play" data-start="bubble"><span>▶</span> Play</button>
+              <button class="help-btn" data-help="bubble">? How to Play</button>
+            </div>
+          </article>
+
+          <article class="game-card shark-card">
+            <div class="card-scene shark-preview" aria-hidden="true">
+              <img class="card-shark-art" src="assets/generated/shark-idle.png" alt="">
+              <i class="card-fish fish-red"></i><i class="card-fish fish-yellow"></i>
+            </div>
+            <div class="card-body">
+              <span class="number-badge">2</span>
+              <p class="card-kicker">Colours and numbers</p>
+              <h2>Shark Adventure</h2>
+              <p>Swim, catch a fish, and solve the challenge.</p>
+              <div class="card-coins" data-coins="shark"></div>
+              <button class="primary-btn shark-play" data-start="shark"><span>▶</span> Play</button>
+              <button class="help-btn green-outline" data-help="shark">? How to Play</button>
+            </div>
+          </article>
+
+          <article class="game-card sub-card">
+            <div class="card-scene sub-preview sorter-card-preview" aria-hidden="true">
+              <img class="card-sub-art" src="assets/generated/submarine.png" alt="">
+              <div class="sorter-preview-grid">
+                <span class="sorter-preview-item preview-pets"><img src="assets/generated/sorter-cat.png" alt=""><small>Pets</small></span>
+                <span class="sorter-preview-item preview-animals"><img src="assets/generated/sorter-lion.png" alt=""><small>Animals</small></span>
+                <span class="sorter-preview-item preview-family"><img src="assets/generated/sorter-mother.png" alt=""><small>Family</small></span>
+                <span class="sorter-preview-item preview-clothes"><img src="assets/generated/sorter-hat.png" alt=""><small>Clothes</small></span>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="number-badge">3</span>
+              <p class="card-kicker">Sort the words</p>
+              <h2>Submarine Sorter</h2>
+              <p>Take every word to the right group.</p>
+              <div class="card-coins" data-coins="submarine"></div>
+              <button class="primary-btn sub-play" data-start="submarine"><span>▶</span> Play</button>
+              <button class="help-btn blue-outline" data-help="submarine">? How to Play</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="map-view" class="view">
+        <div class="section-heading">
+          <button class="back-btn" data-nav="home">← Back</button>
+          <div><p class="eyebrow">The path to the treasure</p><h1>My Map</h1></div>
+        </div>
+        <div class="map-layout">
+          <div id="treasure-map" class="treasure-map panel" aria-label="Treasure map"></div>
+          <aside class="map-info panel">
+            <div class="map-compass">✦</div>
+            <h2 id="map-title">Keep playing!</h2>
+            <p id="map-message">Earn 3 coins in each game to reveal every map piece.</p>
+            <div id="map-game-list"></div>
+            <button id="open-treasure" class="primary-btn hidden">Open the Treasure</button>
+          </aside>
+        </div>
+      </section>
+
+      <section id="game-view" class="view">
+        <div class="game-toolbar panel">
+          <button id="exit-game" class="back-btn">← Exit</button>
+          <div id="game-title">Game</div>
+          <div id="game-status"></div>
+          <button id="repeat-audio" class="round-btn hidden" aria-label="Repeat the word">🔊</button>
+        </div>
+        <div id="game-stage" class="game-stage panel"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card panel">
+      <button id="modal-close" class="modal-close" aria-label="Close">×</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
